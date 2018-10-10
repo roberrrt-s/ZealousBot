@@ -4,3 +4,5 @@ node_modules
 # Files
 package-lock.json
 core/Config.js
+*.sublime-workspace
+*.sublime-project
