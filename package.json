@@ -1,0 +1,16 @@
+{
+  "name": "zealousbot",
+  "version": "0.0.1",
+  "description": "Discord / Web fetch and serve bot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "author": "Robert Spier",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "cron": "^1.4.1",
+    "discord.js": "^11.4.2",
+    "nodemon": "^1.18.4"
+  }
+}
