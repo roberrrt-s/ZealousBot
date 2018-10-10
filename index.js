@@ -1,4 +1,4 @@
-const CONFIG = require('./core/Config');
+const CONFIG = require('./config/Config');
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -14,7 +14,7 @@ const job = new cron(
 	},
 	null,
 	true,
-	'Europe/London'
+	CONFIG.TIMEZONE
 );
 
 job.start();
