@@ -1,8 +1,8 @@
 const info = require('./../package.json');
 
 const MESSAGES = {
-	DAILY_RESET: 'The MapleStory 2 EU daily limit has been reset. You can now do your daily quests/raids/guildquests again',
-	WEEKLY_RESET: 'The MapleStory 2 EU weekly limit has been reset. You can now do your daily quests/raids/guildquests again',
+	DAILY_RESET: 'The MapleStory 2 daily limit has been reset. You can now do your daily quests/raids/guildquests again',
+	WEEKLY_RESET: 'The MapleStory 2 weekly limit has been reset. You can now do your daily quests/raids/guildquests again',
 }
 
 const COMMANDS = {
@@ -18,7 +18,7 @@ const COMMANDS = {
 			"url": "https://cdn.discordapp.com/icons/438734880386449408/431d7c42aa812427fd7c280038c0aabd.webp"
 		},
 		"author": {
-			"name": "ZealousBot for MapleStory 2 (EU)",
+			"name": "ZealousBot for MapleStory 2",
 			"url": "https://github.com/roberrrt-s",
 			"icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
 		},
@@ -33,7 +33,7 @@ const COMMANDS = {
 			},
 			{
 				"name": "+servertime",
-				"value": "Returns the current EU servertime (GMT/UTC+0)"
+				"value": "Returns the current servertime (GMT/UTC+0)"
 			},
 			{
 				"name": "**CRONJOBS**",

@@ -4,7 +4,7 @@
   "description": "Discord / Web fetch and serve bot.",
   "main": "App.js",
   "scripts": {
-    "test": "npm start"
+    "start": "nodemon App.js"
   },
   "author": "Robert Spier",
   "license": "GPL-3.0-or-later",

@@ -1,7 +1,7 @@
 const CONFIG = {
 	API_KEY: '<your api key>',
 	DEFAULT: '<your default bot channel>',
-	TIMEZONE: '<your timezone (Europe/London)>',
+	TIMEZONE: 'Europe/London', // Always Europe/London because UTC
 	PREFIX: '<your command prefix'
 }
 
