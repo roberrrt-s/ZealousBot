@@ -18,6 +18,13 @@ Coming soon.
 
 ## About
 
-When forking this repository, create a new `Config.js` file using the [`Config-example.js`](./config/Config-example.js) file provided. Please never upload keys or passwords to github.
+When forking this repository, create a new `Config.js` file using the [`Config-example.js`](./config/Config-example.js) file provided. Please never upload keys or passwords to GitHub.
+ZealousBot has been created using nodejs v9.11.1 and npm 6.4.1
+
+ - This repository requires NodeJS and NPM.
+ - Fork this repository
+ - Create your own Config.js
+ - Run `npm install`
+ - Run `nodemon App.js`
 
 ZealousBot is [GNU licensed](./LICENSE).
