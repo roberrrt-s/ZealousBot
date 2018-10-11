@@ -20,21 +20,39 @@ class Commands {
 		const command = args.shift().toLowerCase();
 
 		switch(command) {
+			case 'help':
+				this.getHelp(msg);
+				break;
 			case 'servertime':
-			this.getServerTime(msg);
-			break;
+				this.getServerTime(msg);
+				break;
 			default:
-			this.throwError(command);
+				this.throwError(msg, command);
 		}
 
 	}
 
+	getHelp(msg) {
+		msg.delete(500)
+		msg.channel.send('coming soon')
+			.then(msg => {
+				msg.delete(20000);
+			})
+			.catch(console.error);
+	}
+
 	getServerTime(msg) {
+		msg.delete(500)
 		msg.channel.send(`${this.COMMANDS.SERVER_TIME} ${moment().utc().format('HH:mm:ss')}`);
 	}
 
-	throwError() {
-		console.log('Unknown command, try using +help');
+	throwError(msg, command) {
+		msg.delete(500)
+		msg.channel.send(`${this.COMMANDS.UNKNOWN_COMMAND} (${command})`)
+			.then(msg => {
+				msg.delete(5000);
+			})
+			.catch(console.error);
 	}
 }
 

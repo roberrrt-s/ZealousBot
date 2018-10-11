@@ -41,11 +41,13 @@ class Events {
 			if (msg.author.bot) return;
 
 			// Always ignore non-zealousbot channels
-			if (!msg.channel.name === this.CONFIG.DEFAULT) return;
+			if (!msg.channel.name === this.CONFIG.DEFAULT);
 
 			// If the message is prefixed with a + we assume it's a command.
 			if (msg.content.startsWith(this.CONFIG.PREFIX)) {
 				this.commands.commandHandler(msg);
+			} else {
+				msg.delete(500) // Only I shall speak here, you peasent.
 			}
 		});
 	}

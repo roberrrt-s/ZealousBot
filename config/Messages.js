@@ -4,6 +4,7 @@ const MESSAGES = {
 }
 
 const COMMANDS = {
+	UNKNOWN_COMMAND: "Unrecognized command, please use `+help` more information",
 	SERVER_TIME: "Current EU MapleStory2 server time:"
 }
 
