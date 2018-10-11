@@ -8,6 +8,10 @@
   },
   "author": "Robert Spier",
   "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/roberrrt-s/ZealousBot.git"
+  },
   "dependencies": {
     "cron": "^1.4.1",
     "discord.js": "^11.4.2",

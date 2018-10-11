@@ -19,7 +19,7 @@ const COMMANDS = {
 		},
 		"author": {
 			"name": "ZealousBot for MapleStory 2",
-			"url": "https://github.com/roberrrt-s",
+			"url": "https://github.com/roberrrt-s/ZealousBot",
 			"icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
 		},
 		"fields": [
