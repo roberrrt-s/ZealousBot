@@ -7,7 +7,7 @@ const MESSAGES = {
 
 const COMMANDS = {
 	HELP: {
-		"description": "ZealousBot is a handy Discord-based bot that creates and resides in it's own channel `zealousbot-channel`. It has several cronjobs informing users about daily resets, boss spawns etc and also includes a list of commands to request specific MS2 details. See the list below for more information. Want to contribute / report bugs? Please click this embedded message and create a new issue in the repository.",
+		"description": "ZealousBot is a handy Discord bot that creates and resides in it's own channel `zealousbot-channel`. It has several cronjobs informing users about daily resets, boss spawns etc and also includes a list of commands to request specific MS2 details. See the list below for more information. Want to contribute / report bugs? Please click this embedded message and create a new issue in the repository.",
 		"color": 16777215,
 		"timestamp": Date.now(),
 		"footer": {
