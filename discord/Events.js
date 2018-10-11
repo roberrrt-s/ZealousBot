@@ -1,14 +1,17 @@
 class Events {
-	constructor(client) {
+	constructor(CONFIG, client) {
 		this.app;
 		this.util;
+		this.commands;
+		this.CONFIG = CONFIG;
 		this.client = client;
 	}
 
 	// Handle local reference
-	init(app, methods) {
+	init(app, methods, commands) {
 		this.app = app;
-		this.methods = methods
+		this.methods = methods;
+		this.commands = commands;
 		this.initEvents();
 	}
 
@@ -26,15 +29,24 @@ class Events {
 	}
 
 	guildCreate() {
-		this.client.on('guildCreate', () => {
+		this.client.on('guildCreate', guild => {
 			console.log('Added to a new guild!')
+			this.methods.createChannel(guild);
 		});
 	}
 
 	message() {
 		this.client.on('message', msg => {
+			// Always ignore bot messages
 			if (msg.author.bot) return;
-			console.log('New message in channel!');
+
+			// Always ignore non-zealousbot channels
+			if (!msg.channel.name === this.CONFIG.DEFAULT) return;
+
+			// If the message is prefixed with a + we assume it's a command.
+			if (msg.content.startsWith(this.CONFIG.PREFIX)) {
+				this.commands.commandHandler(msg);
+			}
 		});
 	}
 }

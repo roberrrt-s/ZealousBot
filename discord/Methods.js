@@ -15,6 +15,8 @@ class Methods {
 			guilds.map(guild => {
 				!guild.channels.find(channel => channel.name === this.CONFIG.DEFAULT) ? this.createChannel(guild) : null;
 			});
+
+			this.app.initCrons();
 		}
 	}
 
