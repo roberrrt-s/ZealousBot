@@ -34,9 +34,11 @@ class Commands {
 
 	getHelp(msg) {
 		msg.delete(500)
-		msg.channel.send('coming soon')
+		msg.channel.send({
+			embed: this.COMMANDS.HELP
+		})
 			.then(msg => {
-				msg.delete(20000);
+				msg.delete(30000);
 			})
 			.catch(console.error);
 	}
