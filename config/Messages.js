@@ -1,3 +1,5 @@
+const info = require('./../package.json');
+
 const MESSAGES = {
 	DAILY_RESET: 'The MapleStory 2 EU daily limit has been reset. You can now do your daily quests/raids/guildquests again',
 	WEEKLY_RESET: 'The MapleStory 2 EU weekly limit has been reset. You can now do your daily quests/raids/guildquests again',
@@ -10,7 +12,7 @@ const COMMANDS = {
 		"timestamp": Date.now(),
 		"footer": {
 			"icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
-			"text": "ZealousBot 1.0 | Created by Robert Spier"
+			"text": `${info.name} ${info.version} | Created by ${info.author}`
 		},
 		"thumbnail": {
 			"url": "https://cdn.discordapp.com/icons/438734880386449408/431d7c42aa812427fd7c280038c0aabd.webp"

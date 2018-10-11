@@ -21,9 +21,12 @@ class Methods {
 	}
 
 	createChannel(guild) {
+		// Extra check in case a channel with the same name already exists
+		if (guild.channels.find(channel => channel.name === this.CONFIG.DEFAULT)) return;
+
 		console.log(`Did not find a channel on server ${guild.name}, creating one now...`)
 		guild.createChannel(this.CONFIG.DEFAULT, 'text', [], 'I require my own channel for updates')
-			.then(e => e.send('`Created a new channel in this server. Type +help for commands`'))
+			.then(e => e.send('Created a new channel in this server. Type `+help` for commands'))
 			.catch(console.error);
 	}
 }
