@@ -20,7 +20,7 @@ class Crons {
 
 	dailyReset() {
 		const dailyReset = new this.CronJob(
-			'01 00 00 * * 1-4,6-7',
+			'01 00 00 * * 0-4,6',
 			() => {
 				this.client.channels.find(channel => channel.name === this.CONFIG.DEFAULT).send(`${this.util.prettyDateTime()}: ${this.MESSAGES.DAILY_RESET}`);
 			},
