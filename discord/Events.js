@@ -38,10 +38,22 @@ class Events {
 	message() {
 		this.client.on('message', msg => {
 			// Always ignore bot messages
-			if (msg.author.bot) return;
+			if (msg.author.bot) {
+				console.log('bot')
+				return false;
+			}
+
+			// Do not allow anyone to post in the GQ channel
+			if (msg.channel.name === this.CONFIG.DAILYGQ) {
+				msg.delete(500);
+				return false;
+			}
 
 			// Always ignore non-zealousbot channels
-			if (!msg.channel.name === this.CONFIG.DEFAULT);
+			if (msg.channel.name !== this.CONFIG.DEFAULT) {
+				console.log('wrong')
+				return false;
+			}
 
 			// If the message is prefixed with a + we assume it's a command.
 			if (msg.content.startsWith(this.CONFIG.PREFIX)) {
@@ -49,7 +61,7 @@ class Events {
 			} else {
 				msg.delete(500) // Only I shall speak here, you peasent.
 			}
-		});
+		})
 	}
 }
 
