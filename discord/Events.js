@@ -39,7 +39,6 @@ class Events {
 		this.client.on('message', msg => {
 			// Always ignore bot messages
 			if (msg.author.bot) {
-				console.log('bot')
 				return false;
 			}
 
@@ -51,7 +50,6 @@ class Events {
 
 			// Always ignore non-zealousbot channels
 			if (msg.channel.name !== this.CONFIG.DEFAULT) {
-				console.log('wrong')
 				return false;
 			}
 

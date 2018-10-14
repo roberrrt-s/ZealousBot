@@ -49,7 +49,8 @@ const COMMANDS = {
 			}
 		]
 	},
-	UNKNOWN_COMMAND: "Unrecognized command, please use `+help` more information",
+	UNKNOWN_COMMAND: ":no_entry_sign: Unrecognized command, please use `+help` more information",
+	INVALID_ARGS: ":no_entry_sign: Command requires at least 1 argument",
 	SERVER_TIME: "Current EU MapleStory2 server time:"
 }
 

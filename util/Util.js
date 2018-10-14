@@ -1,13 +1,13 @@
 const moment = require('moment');
 
 class Util {
-
-	// Requires a date object
-	// Why not do this here? Simple. Async functionalities.
-	prettyDateTime(date) {
+	prettyTime() {
 		const now = moment().utc();
 		return `[${now.format('HH:mm:ss')}]`;
-
+	}
+	prettyDate() {
+		const now = moment().utc();
+		return `[${now.format('Do')} of ${now.format('MMMM')}]`;
 	}
 }
 

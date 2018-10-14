@@ -32,7 +32,7 @@ class App {
 		connect.init(this, methods);
 		crons.init(this, methods, util);
 		methods.init(this);
-		commands.init(this, util)
+		commands.init(this, methods, util)
 		this.init();
 	}
 
@@ -43,8 +43,10 @@ class App {
 	}
 
 	initCrons() {
+		// crons.testReset();
 		crons.dailyReset();
 		crons.weeklyReset();
+		crons.guildQuestReset();
 	}
 }
 
