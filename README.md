@@ -9,12 +9,14 @@ Coming soon.
 ## Commands
 
  - `+help`
- - `+servertime` 
+ - `+servertime`
+ - `+setdaily`
 
 ## Cronjobs 
 
 - `dailyReset`
 - `weeklyReset`
+- `guildQuestReset`
 
 ## About
 

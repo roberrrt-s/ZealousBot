@@ -36,6 +36,10 @@ const COMMANDS = {
 				"value": "Returns the current servertime (GMT/UTC+0)"
 			},
 			{
+				"name": "+setdaily <mission>",
+				"value": "Creates (if not found) a #daily-guildquest channel which sets one message at the top with the current daily guild quest objective. A new command resets the initial message"
+			},
+			{
 				"name": "**CRONJOBS**",
 				"value": "List of chronological messages:"
 			},
@@ -46,6 +50,10 @@ const COMMANDS = {
 			{
 				"name": "weeklyReset",
 				"value": "Sends a message whenever the weekly reset happens"
+			},
+			{
+				"name": "guildQuestReset",
+				"value": "Resets the #daily-guildquest channel on a daily basis."
 			}
 		]
 	},
