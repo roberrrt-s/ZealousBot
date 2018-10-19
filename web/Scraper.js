@@ -13,23 +13,25 @@ class Scraper {
 		this.scrapeNews();
 	}
 
-	async scrapeNews() {
+	async scrapeNews(cb) {
 		try {
-			let response = await fetch(this.CONFIG.NEWS_URL);
+			let response = await fetch(`${this.CONFIG.NEWS_URL}?${Date.now()}`);
 			let html = await response.text();
-			this.parseNews(html);
+			this.parseNews(cb, html);
 		} catch(e) {
 			console.log(e);
 		}
 	}
 
-	async parseNews(html) {
+	async parseNews(cb, html) {
 		try {
 			const $ = await cheerio.load(html);
+			let news = []
 			$('.news-list > .news-item').map((i, el) => {
 				const url = $(el).find('a').attr('href');
 				const urlId = url.split('/');
-				console.log(parseInt(urlId[4]));
+
+				news.push(url);
 
 				// If there's no latest id (this happens upon reinitializing)
 				if (!this.latest.length && i === 0) {
@@ -37,7 +39,13 @@ class Scraper {
 				}
 
 			});
+
 			console.log(`Latest article ID: ${this.latest}`);
+
+			if(cb) {
+				cb(news)
+			}
+
 		} catch(e) {
 			console.log(e)
 		}

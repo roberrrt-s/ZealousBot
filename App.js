@@ -32,7 +32,7 @@ class App {
 		// Set local references to the App class for later use
 		events.init(this, methods, commands);
 		connect.init(this, methods);
-		crons.init(this, methods, util);
+		crons.init(this, methods, util, scraper);
 		methods.init(this);
 		commands.init(this, methods, util);
 		scraper.init(this);
@@ -50,6 +50,7 @@ class App {
 		crons.dailyReset();
 		crons.weeklyReset();
 		crons.guildQuestReset();
+		crons.checkNewsWebsite();
 	}
 }
 

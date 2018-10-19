@@ -70,7 +70,11 @@ class Methods {
 
 	truncateChannel(channel, callback) {
 		channel.bulkDelete(100)
-			.then(callback());
+		.then(() => {
+			if (callback) {
+				callback()
+			}
+		});
 	}
 }
 
