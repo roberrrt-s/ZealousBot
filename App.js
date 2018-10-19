@@ -13,6 +13,7 @@ const Events = require('./discord/Events.js').Events;
 const Connect = require('./discord/Connect.js').Connect;
 const Methods = require('./discord/Methods.js').Methods;
 const Commands = require('./discord/Commands.js').Commands;
+const Scraper = require('./web/Scraper.js').Scraper;
 const Util = require('./util/Util.js').Util;
 
 // Local classes
@@ -21,6 +22,7 @@ const events = new Events(CONFIG, client);
 const connect = new Connect(CONFIG, client);
 const methods = new Methods(CONFIG, client);
 const commands = new Commands(CONFIG, COMMANDS, client);
+const scraper = new Scraper(CONFIG);
 const util = new Util();
 
 // App, could also be named controller but whatever.
@@ -32,7 +34,8 @@ class App {
 		connect.init(this, methods);
 		crons.init(this, methods, util);
 		methods.init(this);
-		commands.init(this, methods, util)
+		commands.init(this, methods, util);
+		scraper.init(this);
 		this.init();
 	}
 

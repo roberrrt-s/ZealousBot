@@ -13,12 +13,25 @@ class Methods {
 	checkGuilds(guilds) {
 		if(guilds) {
 			guilds.map(guild => {
-				!guild.channels.find(channel => channel.name === this.CONFIG.DEFAULT) ? this.createCategory(guild) : null;
+				!guild.channels.find(channel => channel.name === this.CONFIG.CATEGORY) ? this.createCategory(guild) : null;
 				!guild.channels.find(channel => channel.name === this.CONFIG.DEFAULT) ? this.createChannel(guild) : null;
+				!guild.channels.find(channel => channel.name === this.CONFIG.NEWS) ? this.createNews(guild) : null;
 			});
 
 			this.app.initCrons();
 		}
+	}
+
+	createNews(guild) {
+		// Extra check in case a channel with the same name already exists
+		if (guild.channels.find(channel => channel.name === this.CONFIG.NEWS)) return;
+
+		console.log(`Did not find a channel on server ${guild.name}, creating one now...`)
+		guild.createChannel(this.CONFIG.NEWS, 'text', [], 'I require my own channel for news')
+			.then(channel => {
+				channel.setParent(channel.guild.channels.find(channel => channel.name === this.CONFIG.CATEGORY));
+			})
+			.catch(console.error);
 	}
 
 	createCategory(guild) {
