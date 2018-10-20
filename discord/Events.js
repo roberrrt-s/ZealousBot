@@ -42,6 +42,12 @@ class Events {
 				return false;
 			}
 
+			// Do not allow anyone to post in the news channel
+			if (msg.channel.name === this.CONFIG.NEWS) {
+				msg.delete(500);
+				return false;
+			}
+
 			// Do not allow anyone to post in the GQ channel
 			if (msg.channel.name === this.CONFIG.DAILYGQ) {
 				msg.delete(500);

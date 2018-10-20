@@ -93,28 +93,41 @@ class Crons {
 
 	checkNewsWebsite() {
 		const checkNewsWebsite = new this.CronJob(
-			'00 * * * * *',
+			'00,20,40 * * * * *',
 			() => {
-				console.log('i run')
-
 				this.scraper.scrapeNews(news => {
 					if(news) {
 						this.client.channels.forEach(channel => {
 							if(channel.name === this.CONFIG.NEWS) {
-								this.methods.truncateChannel(channel, () => {
-									news.forEach((item) => {
-										channel.send(`${this.CONFIG.NEWS_PREFIX}${item}`)
+								channel.fetchMessages({ limit: 1 })
+									.then(messages => {
+										if(messages.size) {
+											messages.find(message => {
+												// yadayada, do something with checking the past news updates and sending them
+
+												console.log(news[0]);
+												console.log(this.scraper.latest);
+												console.log(this.scraper.random);
+
+												// If the latest message doesn't contain the id of the latest saved post:
+												if (parseInt(message.content.indexOf(this.scraper.latest, 10) < 0)) {
+													console.log('sending')
+													channel.send(`${this.CONFIG.NEWS_PREFIX}${news[0]}`);
+												}
+											});
+										}
+										else {
+											// If the channel is empty, send the 10 latest items.
+											news.reverse();
+											news.forEach((item) => {
+												channel.send(`${this.CONFIG.NEWS_PREFIX}${item}`)
+											})
+										}
 									})
-								});
 							}
 						});
 					}
 				});
-				// this.client.channels.forEach(channel => {
-				// 	this.methods.truncateChannel(channel, () => {
-				// 		channel.send(`Nobody has set the daily guild quest objective yet, update it in the #${this.CONFIG.DEFAULT} channel using ${this.CONFIG.PREFIX}setdaily`)
-				// 	})
-				// });
 			},
 			null,
 			true,

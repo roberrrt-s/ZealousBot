@@ -5,12 +5,17 @@ class Scraper {
 	constructor(CONFIG) {
 		this.app;
 		this.latest = 0;
+		this.random = 0;
 		this.CONFIG = CONFIG;
 	}
 
 	init(app) {
 		this.app = app;
 		this.scrapeNews();
+
+		setInterval(() => {
+			this.random = Math.random();
+		}, 8000)
 	}
 
 	async scrapeNews(cb) {
@@ -36,6 +41,12 @@ class Scraper {
 				// If there's no latest id (this happens upon reinitializing)
 				if (!this.latest.length && i === 0) {
 					this.latest = parseInt(urlId[4])
+				}
+
+				// If there's a latest id set
+				if(this.latest.length && i === 0) {
+					// Replace the latest url ID since there is new news!
+					this.latest === parseInt(urlId[4], 10) ? null : this.latest = parseInt(urlId(4), 10);
 				}
 
 			});
