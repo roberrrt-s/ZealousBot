@@ -54,6 +54,10 @@ const COMMANDS = {
 			{
 				"name": "guildQuestReset",
 				"value": "Resets the #daily-guildquest channel on a daily basis."
+			},
+			{
+				"name": "checkNewsWebsite",
+				"value": "Checks the MS2 global news section and sends the latest news if there's a new article"
 			}
 		]
 	},

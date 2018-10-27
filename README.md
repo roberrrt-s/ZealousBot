@@ -4,19 +4,29 @@ ZealousBot is a handy Discord bot that creates and resides in it's own channel (
 
 ## Installation
 
-Coming soon.
+Coming soon. (really soon)... it's not even 'published' yet.
 
 ## Commands
 
- - `+help`
- - `+servertime`
- - `+setdaily`
+ - `+help` Returns an embed message with all commands and cronjobs
+ - `+servertime` Returns the current server time in GMT
+ - `+setdaily <arg>` Updates the daily guild quest channel
 
 ## Cronjobs 
 
-- `dailyReset`
-- `weeklyReset`
-- `guildQuestReset`
+- `dailyReset` every day except Friday at 0:00 GMT
+- `weeklyReset` every Friday night at 0:00 GMT
+- `guildQuestReset` every day at 0:00 GMT
+- `checkNewsWebsite` every 30 minutes
+
+## Personalization
+
+More information regarding personalized info per channel. Coming soon
+
+## TODO
+
+- Check for more than 1 message inside the checkNewsWebsite in case two articles are released simultaniously
+- Clean up the current structure inside the application
 
 ## About
 

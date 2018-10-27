@@ -42,7 +42,7 @@ class Commands {
 			embed: this.COMMANDS.HELP
 		})
 			.then(msg => {
-				msg.delete(30000);
+				msg.delete(45000);
 			})
 			.catch(console.error);
 	}
