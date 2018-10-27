@@ -22,7 +22,7 @@ const events = new Events(CONFIG, client);
 const connect = new Connect(CONFIG, client);
 const methods = new Methods(CONFIG, client);
 const commands = new Commands(CONFIG, COMMANDS, client);
-const scraper = new Scraper(CONFIG);
+const scraper = new Scraper(CONFIG, client);
 const util = new Util();
 
 // App, could also be named controller but whatever.
@@ -33,7 +33,7 @@ class App {
 		events.init(this, methods, commands);
 		connect.init(this, methods);
 		crons.init(this, methods, util, scraper);
-		methods.init(this);
+		methods.init(this, scraper);
 		commands.init(this, methods, util);
 		scraper.init(this);
 		this.init();

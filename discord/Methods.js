@@ -6,8 +6,9 @@ class Methods {
 	}
 
 	// Handle local reference
-	init(app) {
+	init(app, scraper) {
 		this.app = app;
+		this.scraper = scraper
 	}
 
 	checkGuilds(guilds) {
@@ -18,6 +19,7 @@ class Methods {
 				!guild.channels.find(channel => channel.name === this.CONFIG.NEWS) ? this.createNews(guild) : null;
 			});
 
+			this.scraper.onInit();
 			this.app.initCrons();
 		}
 	}
@@ -30,6 +32,9 @@ class Methods {
 		guild.createChannel(this.CONFIG.NEWS, 'text', [], 'I require my own channel for news')
 			.then(channel => {
 				channel.setParent(channel.guild.channels.find(channel => channel.name === this.CONFIG.CATEGORY));
+				this.scraper.scrapeNews(news => {
+					this.scraper.sendNews(news);
+				});	
 			})
 			.catch(console.error);
 	}

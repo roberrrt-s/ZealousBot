@@ -93,40 +93,10 @@ class Crons {
 
 	checkNewsWebsite() {
 		const checkNewsWebsite = new this.CronJob(
-			'00,20,40 * * * * *',
+			'00 00,30 0-23 * * *',
 			() => {
 				this.scraper.scrapeNews(news => {
-					if(news) {
-						this.client.channels.forEach(channel => {
-							if(channel.name === this.CONFIG.NEWS) {
-								channel.fetchMessages({ limit: 1 })
-									.then(messages => {
-										if(messages.size) {
-											messages.find(message => {
-												// yadayada, do something with checking the past news updates and sending them
-
-												console.log(news[0]);
-												console.log(this.scraper.latest);
-												console.log(this.scraper.random);
-
-												// If the latest message doesn't contain the id of the latest saved post:
-												if (parseInt(message.content.indexOf(this.scraper.latest, 10) < 0)) {
-													console.log('sending')
-													channel.send(`${this.CONFIG.NEWS_PREFIX}${news[0]}`);
-												}
-											});
-										}
-										else {
-											// If the channel is empty, send the 10 latest items.
-											news.reverse();
-											news.forEach((item) => {
-												channel.send(`${this.CONFIG.NEWS_PREFIX}${item}`)
-											})
-										}
-									})
-							}
-						});
-					}
+					this.scraper.sendNews(news);
 				});
 			},
 			null,
