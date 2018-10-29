@@ -94,6 +94,7 @@ class Crons {
 	checkNewsWebsite() {
 		const checkNewsWebsite = new this.CronJob(
 			'00 00,30 0-23 * * *',
+//			'00 00 00 * * * *',
 			() => {
 				this.scraper.scrapeNews(news => {
 					this.scraper.sendNews(news);

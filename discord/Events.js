@@ -16,9 +16,16 @@ class Events {
 	}
 
 	initEvents() {
+		this.error();
 		this.ready();
 		this.guildCreate();
 		this.message();
+	}
+
+	error() {
+		this.client.on('error', msg => {
+			console.log(msg);
+		});
 	}
 
 	ready() {

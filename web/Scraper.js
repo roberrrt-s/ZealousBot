@@ -15,7 +15,6 @@ class Scraper {
 	}
 
 	onInit() {
-		console.log('when initializing')
 		this.scrapeNews(news => {
 			this.sendNews(news);
 		});
@@ -67,24 +66,27 @@ class Scraper {
 
 	sendNews(news) {
 		if(news) {
+			news.reverse();
 			this.client.channels.forEach(channel => {
 				if(channel.name === this.CONFIG.NEWS) {
-					channel.fetchMessages({ limit: 1 })
+					channel.fetchMessages({ limit: 10 })
 						.then(messages => {
-							if(messages.size) {
-								messages.find(message => {
-									// yadayada, do something with checking the past news updates and sending them
-									let location = parseInt(message.content.indexOf(this.latest, 10));
+							if(messages.size > 0) {
+								let msgArr = messages.array().reverse();
+								let last = msgArr[msgArr.length - 1].content;
+								let foundIndex = null;
 
-									// If the latest message doesn't contain the id of the latest saved post:
-									if (location === -1) {
-										channel.send(`${this.CONFIG.NEWS_PREFIX}${news[0]}`);
+								news.map((item, i) => {
+									if(last.indexOf(item) > 0) {
+										foundIndex = i;
+									}
+									if(foundIndex !== null && i > foundIndex) {
+										channel.send(`${this.CONFIG.NEWS_PREFIX}${item}`);
 									}
 								});
 							}
 							else {
 								// If the channel is empty, send the 10 latest items.
-								news.reverse();
 								news.forEach((item) => {
 									channel.send(`${this.CONFIG.NEWS_PREFIX}${item}`)
 								})
