@@ -25,7 +25,7 @@ More information regarding personalized info per channel. Coming soon
 
 ## TODO
 
-- Check for more than 1 message inside the checkNewsWebsite in case two articles are released simultaniously
+- Create a way to ping the MS2 servers so you get a notification when the server is online
 - Clean up the current structure inside the application
 
 ## About
