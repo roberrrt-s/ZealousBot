@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "Discord / Web fetch and serve bot.",
   "main": "App.js",
+  "engines": {
+    "node": "8.x",
+    "npm": "*"
+  },
   "scripts": {
     "start": "nodemon App.js"
   },
