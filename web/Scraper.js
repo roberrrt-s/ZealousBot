@@ -81,7 +81,7 @@ class Scraper {
 										foundIndex = i;
 									}
 									if(foundIndex !== null && i > foundIndex) {
-										channel.send(`${this.CONFIG.NEWS_PREFIX}${item}`);
+										channel.send(`Hey @everyone, there's a new news item from Nexon: ${this.CONFIG.NEWS_PREFIX}${item}`);
 									}
 								});
 							}
