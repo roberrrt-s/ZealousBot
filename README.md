@@ -2,9 +2,15 @@
 
 ZealousBot is a handy Discord bot that creates and resides in it's own channel (`zealousbot-channel`). It has several cronjobs (chronological jobs) informing users about daily resets, boss spawns etc and also includes a list of commands to request specific MS2 details. See the list below for more information. Want to contribute / report bugs? Open up an issue or pull request.
 
-## Installation
+## Installation (discord server owners)
 
-Coming soon. (really soon)... it's not even 'published' yet.
+ - [Invite the bot](https://discordapp.com/oauth2/authorize?&client_id=499249546585571357&scope=bot&permissions=8) to your own discord server
+ - Grant the bot admin rights (don't worry, it has been trained to ignore everything except the following channels:)
+ 	- `#zealousbot`
+ 	- `#daily-guildquest`
+ 	- `#official-nexon-news` 
+
+ _That's it!_
 
 ## Commands
 
