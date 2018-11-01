@@ -3,7 +3,6 @@ node_modules
 
 # Files
 package-lock.json
-config/Config.js
 *.sublime-workspace
 *.sublime-project
 *.env
