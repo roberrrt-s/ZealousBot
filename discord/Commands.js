@@ -1,23 +1,12 @@
 const moment = require('moment');
 
 class Commands {
-	constructor(CONFIG, COMMANDS, client) {
-		this.app;
-		this.util;
-		this.client = client;
-		this.CONFIG = CONFIG;
-		this.COMMANDS = COMMANDS
-	}
-
-	// Handle local reference
-	init(app, methods, util) {
+	constructor(app) {
 		this.app = app;
-		this.methods = methods;
-		this.util = util;
 	}
 
 	commandHandler(msg) {
-		const args = msg.content.slice(this.CONFIG.PREFIX.length).trim().split(/ +/g);
+		const args = msg.content.slice(this.app.CONFIG.PREFIX.length).trim().split(/ +/g);
 		const command = args.shift().toLowerCase();
 
 		switch(command) {
@@ -39,7 +28,7 @@ class Commands {
 	getHelp(msg) {
 		msg.delete(500)
 		msg.channel.send({
-			embed: this.COMMANDS.HELP
+			embed: this.app.COMMANDS.HELP
 		})
 			.then(msg => {
 				msg.delete(45000);
@@ -49,14 +38,14 @@ class Commands {
 
 	getServerTime(msg) {
 		msg.delete(500)
-		msg.channel.send(`${this.COMMANDS.SERVER_TIME} ${moment().utc().format('HH:mm:ss')}`);
+		msg.channel.send(`${this.app.COMMANDS.SERVER_TIME} ${moment().utc().format('HH:mm:ss')}`);
 	}
 
 	setDailyGuildQuest(msg, command, args) {
 		msg.delete(500);
 
 		if(!args.length) {
-			msg.channel.send(`${this.COMMANDS.INVALID_ARGS} (${this.CONFIG.PREFIX}${command})`)
+			msg.channel.send(`${this.app.COMMANDS.INVALID_ARGS} (${this.app.CONFIG.PREFIX}${command})`)
 				.then(msg => {
 				msg.delete(5000);
 			})
@@ -65,11 +54,11 @@ class Commands {
 			return false;
 		}
 
-		this.methods.checkGuildQuestChannel(msg.guild, () => {
+		this.app.methods.checkGuildQuestChannel(msg.guild, () => {
 			const daily = args.join(' ');
-			const channel = msg.guild.channels.find(channel => channel.name === this.CONFIG.DAILYGQ);
-			this.methods.truncateChannel(channel, () => {
-				channel.send(`${this.util.prettyDate()} Daily guild quest objective: \n${daily}`);
+			const channel = msg.guild.channels.find(channel => channel.name === this.app.CONFIG.DAILYGQ);
+			this.app.methods.truncateChannel(channel, () => {
+				channel.send(`${this.app.util.prettyDate()} Daily guild quest objective: \n${daily}`);
 			} );
 		});
 
@@ -77,7 +66,7 @@ class Commands {
 
 	throwError(msg, command) {
 		msg.delete(500)
-		msg.channel.send(`${this.COMMANDS.UNKNOWN_COMMAND} (${this.CONFIG.PREFIX}${command})`)
+		msg.channel.send(`${this.app.COMMANDS.UNKNOWN_COMMAND} (${this.app.CONFIG.PREFIX}${command})`)
 			.then(msg => {
 				msg.delete(5000);
 			})

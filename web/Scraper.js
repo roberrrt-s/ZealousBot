@@ -2,19 +2,12 @@ const cheerio = require('cheerio');
 const fetch = require('node-fetch');
 
 class Scraper {
-	constructor(CONFIG, client) {
-		this.app;
+	constructor(app) {
+		this.app = app
 		this.latest = 0;
-		this.client = client;
-		this.CONFIG = CONFIG;
 	}
 
-	init(app) {
-		this.app = app;
-		this.scrapeNews();
-	}
-
-	onInit() {
+	init() {
 		this.scrapeNews(news => {
 			this.sendNews(news);
 		});
@@ -22,7 +15,7 @@ class Scraper {
 
 	async scrapeNews(cb) {
 		try {
-			let response = await fetch(`${this.CONFIG.NEWS_URL}?${Date.now()}`);
+			let response = await fetch(`${this.app.CONFIG.NEWS_URL}?${Date.now()}`);
 			let html = await response.text();
 			this.parseNews(cb, html);
 		} catch(e) {
@@ -48,6 +41,7 @@ class Scraper {
 				// If there's a latest id set
 				if(this.latest.length && i === 0) {
 					// Replace the latest url ID since there is new news!
+					// Looking back i'm so proud of this line O M G.
 					this.latest === parseInt(urlId[4], 10) ? null : this.latest = parseInt(urlId(4), 10);
 				}
 
@@ -67,8 +61,8 @@ class Scraper {
 	sendNews(news) {
 		if(news) {
 			news.reverse();
-			this.client.channels.forEach(channel => {
-				if(channel.name === this.CONFIG.NEWS) {
+			this.app.client.channels.forEach(channel => {
+				if(channel.name === this.app.CONFIG.NEWS) {
 					channel.fetchMessages({ limit: 10 })
 						.then(messages => {
 							if(messages.size > 0) {
@@ -81,14 +75,14 @@ class Scraper {
 										foundIndex = i;
 									}
 									if(foundIndex !== null && i > foundIndex) {
-										channel.send(`Hey @everyone, there's a new news item from Nexon: ${this.CONFIG.NEWS_PREFIX}${item}`);
+										channel.send(`Hey @everyone, there's a new news item from Nexon: ${this.app.CONFIG.NEWS_PREFIX}${item}`);
 									}
 								});
 							}
 							else {
 								// If the channel is empty, send the 10 latest items.
 								news.forEach((item) => {
-									channel.send(`${this.CONFIG.NEWS_PREFIX}${item}`)
+									channel.send(`${this.app.CONFIG.NEWS_PREFIX}${item}`)
 								})
 							}
 						})

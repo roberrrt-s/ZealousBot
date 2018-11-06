@@ -1,18 +1,10 @@
 class Connect {
-	constructor(CONFIG, client) {
-		this.app;
-		this.client = client;
-		this.CONFIG = CONFIG;
-	}
-
-	// Handle local reference
-	init(app, methods) {
-		this.app = app;
-		this.methods = methods;
+	constructor(app) {
+		this.app = app
 	}
 
 	login() {
-		this.client.login(this.CONFIG.API_KEY)
+		this.app.client.login(this.app.CONFIG.API_KEY)
 	}
 }
 

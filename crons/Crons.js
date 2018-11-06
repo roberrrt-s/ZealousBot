@@ -1,108 +1,97 @@
 const moment = require('moment');
+const CronJob = require('cron').CronJob;
 
 class Crons {
-	constructor(CONFIG, MESSAGES, CronJob, client) {
-		this.app;
-		this.util;
-		this.CONFIG = CONFIG;
-		this.MESSAGES = MESSAGES;
-		this.CronJob = CronJob;
-		this.client = client;
+	constructor(app) {
+		this.app = app;
+		
 		this.testResetJob;
 		this.dailyResetJob;
 		this.weeklyResetJob;
 		this.guildQuestResetJob;
-		this.checkNewsWebsite;
-	}
-
-	init(app, methods, util, scraper) {
-		this.app = app;
-		this.methods = methods
-		this.util = util;
-		this.scraper = scraper;
 	}
 
 	testReset() {
-		const testReset = new this.CronJob(
+		const testReset = new CronJob(
 			'* * * * * *',
 			() => {
-				this.client.channels.forEach(channel => {
+				this.app.client.channels.forEach(channel => {
 					console.log('testing');
-					//channel.name === this.CONFIG.DEFAULT ? channel.send(`${this.util.prettyTime()}: ${this.MESSAGES.DAILY_RESET}`) : null
+					//channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.DAILY_RESET}`) : null
 				});
 			},
 			null,
 			true,
-			this.CONFIG.TIMEZONE
+			this.app.CONFIG.TIMEZONE
 		);
 		testReset.start();
 		this.testResetJob = testReset;
 	}
 
 	dailyReset() {
-		const dailyReset = new this.CronJob(
+		const dailyReset = new CronJob(
 			'01 00 00 * * 0-4,6',
 			() => {
-				this.client.channels.forEach(channel => {
-					channel.name === this.CONFIG.DEFAULT ? channel.send(`${this.util.prettyTime()}: ${this.MESSAGES.DAILY_RESET}`) : null
+				this.app.client.channels.forEach(channel => {
+					channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.DAILY_RESET}`) : null
 				});
 			},
 			null,
 			true,
-			this.CONFIG.TIMEZONE
+			this.app.CONFIG.TIMEZONE
 		);
 		dailyReset.start();
 		this.dailyResetJob = dailyReset;
 	}
 
 	weeklyReset() {
-		const weeklyReset = new this.CronJob(
+		const weeklyReset = new CronJob(
 			'01 00 00 * * 5',
 			() => {
-				this.client.channels.forEach(channel => {
-					channel.name === this.CONFIG.DEFAULT ? channel.send(`${this.util.prettyTime()}: ${this.MESSAGES.WEEKLY_RESET}`) : null
+				this.app.client.channels.forEach(channel => {
+					channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.WEEKLY_RESET}`) : null
 				});
 			},
 			null,
 			true,
-			this.CONFIG.TIMEZONE
+			this.app.CONFIG.TIMEZONE
 		);
 		weeklyReset.start();
 		this.weeklyResetJob = weeklyReset;
 	}
 
 	guildQuestReset() {
-		const guildQuestReset = new this.CronJob(
+		const guildQuestReset = new CronJob(
 			'01 00 00 * * *',
 			() => {
-				this.client.channels.forEach(channel => {
-					if(channel.name === this.CONFIG.DAILYGQ) {
-						this.methods.truncateChannel(channel, () => {
-							channel.send(`Nobody has set the daily guild quest objective yet, update it in the #${this.CONFIG.DEFAULT} channel using ${this.CONFIG.PREFIX}setdaily`)
+				this.app.client.channels.forEach(channel => {
+					if(channel.name === this.app.CONFIG.DAILYGQ) {
+						this.app.methods.truncateChannel(channel, () => {
+							channel.send(`Nobody has set the daily guild quest objective yet, update it in the #${this.app.CONFIG.DEFAULT} channel using ${this.app.CONFIG.PREFIX}setdaily`)
 						})
 					}
 				});
 			},
 			null,
 			true,
-			this.CONFIG.TIMEZONE
+			this.app.CONFIG.TIMEZONE
 		);
 		guildQuestReset.start();
 		this.guildQuestResetJob = guildQuestReset;
 	}
 
 	checkNewsWebsite() {
-		const checkNewsWebsite = new this.CronJob(
+		const checkNewsWebsite = new CronJob(
 			'00 00,30 0-23 * * *',
 //			'00 00 00 * * * *',
 			() => {
-				this.scraper.scrapeNews(news => {
-					this.scraper.sendNews(news);
+				this.app.scraper.scrapeNews(news => {
+					this.app.scraper.sendNews(news);
 				});
 			},
 			null,
 			true,
-			this.CONFIG.TIMEZONE
+			this.app.CONFIG.TIMEZONE
 		);
 		checkNewsWebsite.start();
 		this.checkNewsWebsite = checkNewsWebsite;

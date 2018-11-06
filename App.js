@@ -1,10 +1,9 @@
 // Environment
 require('dotenv').config()
 
-// Node modules
+// Initialize discord + client
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const CronJob = require('cron').CronJob;
 
 // Local config files
 const CONFIG = require('./config/Config');
@@ -19,41 +18,40 @@ const Commands = require('./discord/Commands.js').Commands;
 const Scraper = require('./web/Scraper.js').Scraper;
 const Util = require('./util/Util.js').Util;
 
-// Local classes
-const crons = new Crons(CONFIG, MESSAGES, CronJob, client);
-const events = new Events(CONFIG, client);
-const connect = new Connect(CONFIG, client);
-const methods = new Methods(CONFIG, client);
-const commands = new Commands(CONFIG, COMMANDS, client);
-const scraper = new Scraper(CONFIG, client);
-const util = new Util();
-
-// App, could also be named controller but whatever.
 class App {
 	constructor() {
+		// Set the client inside the app
+		this.client = client;
 
-		// Set local references to the App class for later use
-		events.init(this, methods, commands);
-		connect.init(this, methods);
-		crons.init(this, methods, util, scraper);
-		methods.init(this, scraper);
-		commands.init(this, methods, util);
-		scraper.init(this);
+		this.CONFIG = CONFIG;
+		this.MESSAGES = MESSAGES;
+		this.COMMANDS = COMMANDS;
+
+		// Set all application modules inside the main app
+		this.crons = new Crons(this);
+		this.events = new Events(this);
+		this.connect = new Connect(this);
+		this.methods = new Methods(this);
+		this.commands = new Commands(this);
+		this.scraper = new Scraper(this);
+		this.util = new Util();
+
 		this.init();
 	}
 
 	// Initialize connection with Discord
 	init() {
 		console.log('Logging into discord servers');
-		connect.login();
+		this.events.initEvents();
+		this.connect.login();
 	}
 
 	initCrons() {
-		// crons.testReset();
-		crons.dailyReset();
-		crons.weeklyReset();
-		crons.guildQuestReset();
-		crons.checkNewsWebsite();
+		// this.crons.testReset();
+		this.crons.dailyReset();
+		this.crons.weeklyReset();
+		this.crons.guildQuestReset();
+		this.crons.checkNewsWebsite();
 	}
 }
 
