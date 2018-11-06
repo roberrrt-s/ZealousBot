@@ -32,6 +32,7 @@ class Crons {
 		const dailyReset = new CronJob(
 			'01 00 00 * * 0-4,6',
 			() => {
+				console.log(`${this.app.util.prettyDate()} - ${this.app.util.prettyTime()} | Sending daily reset messages`)
 				this.app.client.channels.forEach(channel => {
 					channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.DAILY_RESET}`) : null
 				});
@@ -48,6 +49,7 @@ class Crons {
 		const weeklyReset = new CronJob(
 			'01 00 00 * * 5',
 			() => {
+				console.log(`${this.app.util.prettyDate()} - ${this.app.util.prettyTime()} | Sending weekly reset messages`)
 				this.app.client.channels.forEach(channel => {
 					channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.WEEKLY_RESET}`) : null
 				});
@@ -64,6 +66,7 @@ class Crons {
 		const guildQuestReset = new CronJob(
 			'01 00 00 * * *',
 			() => {
+				console.log(`${this.app.util.prettyDate()} - ${this.app.util.prettyTime()} | Resetting daily guildquest channels`)
 				this.app.client.channels.forEach(channel => {
 					if(channel.name === this.app.CONFIG.DAILYGQ) {
 						this.app.methods.truncateChannel(channel, () => {
@@ -85,6 +88,7 @@ class Crons {
 			'00 00,30 0-23 * * *',
 //			'00 00 00 * * * *',
 			() => {
+				console.log(`${this.app.util.prettyDate()} - ${this.app.util.prettyTime()} | Starting command to scrape NX news site`)
 				this.app.scraper.scrapeNews(news => {
 					this.app.scraper.sendNews(news);
 				});
