@@ -17,6 +17,7 @@ class Scraper {
 		try {
 			let response = await fetch(`${this.app.CONFIG.NEWS_URL}?${Date.now()}`);
 			let html = await response.text();
+			console.log('Awaiting news from the Nexon website');
 			this.parseNews(cb, html);
 		} catch(e) {
 			console.log(e);
@@ -60,6 +61,7 @@ class Scraper {
 
 	sendNews(news) {
 		if(news) {
+			console.log('Sending news');
 			news.reverse();
 			this.app.client.channels.forEach(channel => {
 				if(channel.name === this.app.CONFIG.NEWS) {
