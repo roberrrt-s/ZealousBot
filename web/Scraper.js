@@ -74,10 +74,11 @@ class Scraper {
 							console.log(news);
 							if(messages.size > 0) {
 								let msgArr = messages.array().reverse();
-								let last = msgArr[msgArr.length - 1].content;
+								let last = msgArr[msgArr.length - 1].content.split('/');
+								last = parseInt(last[6], 10);
 								let foundIndex = null;
 
-								console.log('Latest message in the news channel:')
+								console.log('Latest message ID in the news channel:')
 								console.log(last);
 
 								news.map((item, i) => {
