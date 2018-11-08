@@ -82,7 +82,9 @@ class Scraper {
 								console.log(last);
 
 								news.map((item, i) => {
-									if(last.indexOf(item) > 0) {
+									let id = item.split('/');
+
+									if(last.indexOf(id[4]) > 0) {
 										console.log('If this is less than 8, a new message should be send.')
 										foundIndex = i;
 									}
