@@ -64,22 +64,35 @@ class Scraper {
 			console.log('Sending news');
 			news.reverse();
 			this.app.client.channels.forEach(channel => {
+
 				if(channel.name === this.app.CONFIG.NEWS) {
+					console.log(`Found a news channel on server: ${channel.guild.name}`)
+
 					channel.fetchMessages({ limit: 10 })
 						.then(messages => {
+							console.log('Latest 10 news items:')
+							console.log(news);
 							if(messages.size > 0) {
 								let msgArr = messages.array().reverse();
 								let last = msgArr[msgArr.length - 1].content;
 								let foundIndex = null;
 
+								console.log('Latest message in the news channel:')
+								console.log(last);
+
 								news.map((item, i) => {
 									if(last.indexOf(item) > 0) {
+										console.log('If this is less than 8, a new message should be send.')
 										foundIndex = i;
 									}
 									if(foundIndex !== null && i > foundIndex) {
+										console.log('Sending the following news item:')
+										console.log(item);
 										channel.send(`Hey @everyone, there's a new news item from Nexon: ${this.app.CONFIG.NEWS_PREFIX}${item}`);
 									}
 								});
+
+								console.log(foundIndex);
 							}
 							else {
 								// If the channel is empty, send the 10 latest items.
