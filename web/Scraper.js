@@ -68,7 +68,7 @@ class Scraper {
 				if(channel.name === this.app.CONFIG.NEWS) {
 					console.log(`Found a news channel on server: ${channel.guild.name}`)
 
-					channel.fetchMessages({ limit: 10 })
+					channel.fetchMessages({ limit: 9 })
 						.then(messages => {
 							console.log('Latest 10 news items:')
 							console.log(news);
@@ -98,6 +98,7 @@ class Scraper {
 							}
 							else {
 								// If the channel is empty, send the 10 latest items.
+								console.log('Channel is empty, sending the latest 9 items');
 								news.forEach((item) => {
 									channel.send(`${this.app.CONFIG.NEWS_PREFIX}${item}`)
 								})
