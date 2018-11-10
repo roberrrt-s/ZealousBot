@@ -18,6 +18,7 @@ ZealousBot is a handy Discord bot that creates and resides in it's own channel (
  - `+help` Returns an embed message with all commands and cronjobs
  - `+servertime` Returns the current server time in UTC
  - `+setdaily <daily guildquest>` Updates the daily guild quest channel
+ - `+serverstatus` Pings the MS2 login server to check it's status
 
 ## Cronjobs 
 
@@ -26,18 +27,14 @@ ZealousBot is a handy Discord bot that creates and resides in it's own channel (
 - `guildQuestReset` every day at 0:00 UTC
 - `checkNewsWebsite` every 30 minutes
 
-## Personalization
-
-More information regarding personalized info per channel. Coming soon
-
 ## TODO
 
 - Create a way to ping the MS2 servers so you get a notification when the server is online
-- Clean up the current structure inside the application
+- Add more logs to see who uses the server where etc etc. Restrict to 1 user id.
 
 ## About
 
-When forking this repository, create a new `Config.js` file using the [`Config-example.js`](./config/Config-example.js) file provided. Please never upload keys or passwords to GitHub.
+When forking this repository, create a new `.env` file using the [`example.env`](./example.env) file provided. Please never upload keys or passwords to GitHub.
 ZealousBot has been created using nodejs v9.11.1 and npm 6.4.1
 
  - This repository requires NodeJS and NPM.

@@ -40,13 +40,10 @@ class Commands {
 	}
 
 	getServerTime(msg) {
-		msg.delete(500)
 		msg.channel.send(`${this.app.COMMANDS.SERVER_TIME} ${this.app.util.prettyTime()}`);
 	}
 
 	setDailyGuildQuest(msg, command, args) {
-		msg.delete(500);
-
 		if(!args.length) {
 			msg.channel.send(`${this.app.COMMANDS.INVALID_ARGS} (${this.app.CONFIG.PREFIX}${command})`)
 				.then(msg => {
@@ -68,8 +65,6 @@ class Commands {
 	}
 
 	getServerStatus(msg) {
-		msg.delete(500);
-
 		this.app.checker.checkLoginServer(online => {
 			if(online) {
 				msg.channel.send(`Server appears to be online at ${this.app.util.prettyTime()}`);

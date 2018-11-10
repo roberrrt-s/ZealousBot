@@ -5,4 +5,4 @@ node_modules
 package-lock.json
 *.sublime-workspace
 *.sublime-project
-*.env
+.env
