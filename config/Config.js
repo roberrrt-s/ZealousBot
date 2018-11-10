@@ -6,6 +6,8 @@ const CONFIG = {
 	CATEGORY: 'maplestory 2 zealous bot',
 	DAILYGQ: 'daily-guildquest',
 	NEWS: 'official-nexon-news',
+	MS_LOGIN_IP: '127.0.0.1',
+	MS_LOGIN_PORT: '80',
 	TIMEZONE: 'Etc/UTC', // Always Etc/UTC because UTC
 	PREFIX: '+'
 }

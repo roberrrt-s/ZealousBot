@@ -19,6 +19,9 @@ class Commands {
 			case 'setdaily':
 				this.setDailyGuildQuest(msg, command, args);
 				break;
+			case 'serverstatus':
+				this.getServerStatus(msg);
+				break;
 			default:
 				this.throwError(msg, command);
 		}
@@ -38,7 +41,7 @@ class Commands {
 
 	getServerTime(msg) {
 		msg.delete(500)
-		msg.channel.send(`${this.app.COMMANDS.SERVER_TIME} ${moment().utc().format('HH:mm:ss')}`);
+		msg.channel.send(`${this.app.COMMANDS.SERVER_TIME} ${this.app.util.prettyTime()}`);
 	}
 
 	setDailyGuildQuest(msg, command, args) {
@@ -62,6 +65,18 @@ class Commands {
 			} );
 		});
 
+	}
+
+	getServerStatus(msg) {
+		msg.delete(500);
+
+		this.app.checker.checkLoginServer(online => {
+			if(online) {
+				msg.channel.send(`Server appears to be online at ${this.app.util.prettyTime()}`);
+			} else {
+				msg.channel.send(`Server appears to be offline [${moment().utc().format('HH:mm:ss')}]`);
+			}
+		})
 	}
 
 	throwError(msg, command) {

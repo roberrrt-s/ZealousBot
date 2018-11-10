@@ -3,7 +3,7 @@ const moment = require('moment');
 class Util {
 	prettyTime() {
 		const now = moment().utc();
-		return `[${now.format('HH:mm:ss')}]`;
+		return `[${now.format('HH:mm:ss')}] (UTC)`;
 	}
 	prettyDate() {
 		const now = moment().utc();
