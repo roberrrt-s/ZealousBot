@@ -98,7 +98,7 @@ class Crons {
 			this.app.CONFIG.TIMEZONE
 		);
 		checkNewsWebsite.start();
-		this.checkNewsWebsite = checkNewsWebsite;
+		this.checkNewsWebsiteJob = checkNewsWebsite;
 	}
 
 }

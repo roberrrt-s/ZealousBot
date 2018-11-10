@@ -1,6 +1,6 @@
 # ZealousBot &middot; [![GitHub license](https://img.shields.io/badge/license-GNU-blue.svg)](https://github.com/facebook/react/blob/master/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/roberrrt-s/ZealousBot/pulls)
 
-ZealousBot is a handy Discord bot that creates and resides in it's own channel (`#zealousbot`). It has several cronjobs (chronological jobs) informing users about daily resets, boss spawns etc and also includes a list of commands to request specific MS2 details. See the list below for more information. Want to contribute / report bugs? Open up an issue or pull request.
+ZealousBot is a handy Discord bot that creates and resides in it's own channel (`#zealousbot`). It has several cronjobs (chronological jobs) informing users about daily resets, news updates etc and also includes a list of commands to request specific MS2 details. See the list below for more information. Want to contribute / report bugs? Open up an issue or pull request.
 
 I can be reached through Discord as `Preversive (Robert)#6611`.
 
@@ -15,7 +15,7 @@ I can be reached through Discord as `Preversive (Robert)#6611`.
 
  _That's it!_
 
- I'm hosting the bot for you on a server, and it serves all these servers at the same time.
+ I'm hosting the bot for you, and it serves all these servers at the same time.
 
 ## Commands
 
