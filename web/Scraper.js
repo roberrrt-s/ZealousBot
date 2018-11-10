@@ -70,8 +70,6 @@ class Scraper {
 
 					channel.fetchMessages({ limit: 9 })
 						.then(messages => {
-							console.log('Latest 10 news items:')
-							console.log(news);
 							if(messages.size > 0) {
 								let msgArr = messages.array().reverse();
 								let last = msgArr[msgArr.length - 1].content
