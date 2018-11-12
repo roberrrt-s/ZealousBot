@@ -10,6 +10,9 @@ class Commands {
 		const command = args.shift().toLowerCase();
 
 		switch(command) {
+			case 'status':
+				this.getStatus(msg);
+				break;
 			case 'help':
 				this.getHelp(msg);
 				break;
@@ -26,6 +29,17 @@ class Commands {
 				this.throwError(msg, command);
 		}
 
+	}
+
+	getStatus(msg) {
+		if(msg.author.id === '206829489387208704') {
+			let guilds = this.app.client.guilds.array();
+			let guildList = '';
+			for(let i = 0; i < guilds.length; i++) {
+				guildList = guildList + `\`- ${guilds[i].name} in region: ${guilds[i].region}\` \n`;
+			}
+			msg.channel.send(`\`${this.app.client.user.username} (${this.app.client.user.id})\` \n\`I'm currently connected to the following servers:\`\n \n${guildList}`)
+		}
 	}
 
 	getHelp(msg) {

@@ -54,6 +54,7 @@ class App {
 		this.crons.weeklyReset();
 		this.crons.guildQuestReset();
 		this.crons.checkNewsWebsite();
+		this.crons.checkLoginServer();
 	}
 }
 

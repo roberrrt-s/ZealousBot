@@ -36,6 +36,10 @@ const COMMANDS = {
 				"value": "Returns the current servertime (GMT/UTC+0)"
 			},
 			{
+				"name": "+serverstatus",
+				"value": "Runs a check to see if the login server is reachable"
+			},
+			{
 				"name": "+setdaily <mission>",
 				"value": "Creates (if not found) a #daily-guildquest channel which sets one message at the top with the current daily guild quest objective. A new command resets the initial message"
 			},
@@ -63,7 +67,9 @@ const COMMANDS = {
 	},
 	UNKNOWN_COMMAND: ":no_entry_sign: Unrecognized command, please use `+help` more information",
 	INVALID_ARGS: ":no_entry_sign: Command requires at least 1 argument",
-	SERVER_TIME: "Current EU MapleStory2 server time:"
+	SERVER_TIME: "Current EU MapleStory2 server time:",
+	SERVER_OFFLINE: "Hello @everyone, it seems the MS2 login server is offline, changing interval to checking every minute for updates!",
+	SERVER_BACKONLINE: "Hello @everyone, it seems the MS2 login server is now back online!"
 }
 
 module.exports = {MESSAGES, COMMANDS};

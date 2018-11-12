@@ -76,7 +76,7 @@ class Scraper {
 								let foundIndex = null;
 
 								console.log('Latest message ID in the news channel:')
-								console.log(last);
+								console.log(last.split('/')[6]);
 
 								news.map((item, i) => {
 									let id = item.split('/');

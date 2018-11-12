@@ -3,6 +3,8 @@ var tcpp = require('tcp-ping');
 class Checker {
 	constructor(app) {
 		this.app = app
+		// Assume the server is online
+		this.serverStatus = true;
 	}
 
 	checkLoginServer(callback) {

@@ -1,14 +1,16 @@
 const moment = require('moment');
 const CronJob = require('cron').CronJob;
+const CronTime = require('cron').CronTime
 
 class Crons {
 	constructor(app) {
 		this.app = app;
-		
+
 		this.testResetJob;
 		this.dailyResetJob;
 		this.weeklyResetJob;
 		this.guildQuestResetJob;
+		this.checkLoginServerJob;
 	}
 
 	testReset() {
@@ -99,6 +101,47 @@ class Crons {
 		);
 		checkNewsWebsite.start();
 		this.checkNewsWebsiteJob = checkNewsWebsite;
+	}
+
+	checkLoginServer() {
+		const checkLoginServer = new CronJob(
+			//'* * * * * *',
+			'00 0,5,10,15,20,25,30,35,40,45,50,55 * * * *',
+			() => {
+				this.app.checker.checkLoginServer(status => {
+					console.log(`${this.app.util.prettyDate()} - ${this.app.util.prettyTime()} | Checking login server`);
+					console.log(`Server online: ${status}`)
+					// If the server is online:
+					if(status) {
+						// If the server was offline:
+						if(this.app.checker.serverStatus !== status) {
+							this.app.client.channels.forEach(channel => {
+								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_BACKONLINE}`) : null;
+								this.checkLoginServerJob.setTime(new CronTime('00 0,5,10,15,20,25,30,35,40,45,50,55 * * * *'));
+							});
+						} 
+					}
+
+					// If the server is offline
+					if(!status) {
+						// If the server was online:
+						if(this.app.checker.serverStatus !== status) {
+							this.app.client.channels.forEach(channel => {
+								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_OFFLINE}`) : null
+								this.checkLoginServerJob.setTime(new CronTime('00 0,59 * * * *'));
+							});
+						}
+					}
+
+					this.serverStatus = status;
+				})
+			},
+			null,
+			true,
+			this.app.CONFIG.TIMEZONE
+		);
+		checkLoginServer.start();
+		this.checkLoginServerJob = checkLoginServer;
 	}
 
 }
