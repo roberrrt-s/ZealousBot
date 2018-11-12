@@ -62,7 +62,11 @@ const COMMANDS = {
 			{
 				"name": "checkNewsWebsite",
 				"value": "Checks the MS2 global news section and sends the latest news if there's a new article"
-			}
+			},
+			{
+				"name": "checkLoginServer",
+				"value": "Pings the MS2 login server to see if it it's online"
+			},
 		]
 	},
 	UNKNOWN_COMMAND: ":no_entry_sign: Unrecognized command, please use `+help` more information",

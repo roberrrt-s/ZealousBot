@@ -22,7 +22,7 @@ I can be reached through Discord as `Preversive (Robert)#6611`.
  - `+help` Returns an embed message with all commands and cronjobs
  - `+servertime` Returns the current server time in UTC
  - `+setdaily <daily guildquest>` Updates the daily guild quest channel
- - `+serverstatus` Pings the MS2 login server to check it's status
+ - `+serverstatus` Immediately pings the MS2 login server to check it's status
 
 ## Cronjobs 
 
@@ -30,6 +30,7 @@ I can be reached through Discord as `Preversive (Robert)#6611`.
 - `weeklyReset` every Friday night at 0:00 UTC
 - `guildQuestReset` every day at 0:00 UTC
 - `checkNewsWebsite` every 30 minutes
+- `checkLoginServer` every 5 minutes when online, every minute when offline
 
 ## Personalization
 
