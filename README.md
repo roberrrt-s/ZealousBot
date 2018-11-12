@@ -38,8 +38,6 @@ ZealousBot creates his own channels, or will use your current channels with the 
 
 ## TODO
 
-- Create a way to ping the MS2 servers so you get a notification when the server is online.
-- Add more logs to see who uses the server where etc etc. Restrict to 1 user id.
 - Stop automatically creating channels for features, but rather use `+addchannel` if you want to 'subscribe' to functionalites.
 
 ## About / Developers note
