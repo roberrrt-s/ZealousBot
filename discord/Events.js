@@ -19,6 +19,8 @@ class Events {
 	ready() {
 		this.app.client.on('ready', () => {
 			console.log(`Logged in as ${this.app.client.user.tag}`)
+			this.app.client.user.setActivity('MapleStory 2.0', { type: 'Playing' });
+			console.log('Setting activity')
 			this.app.methods.checkGuilds(this.app.client.guilds.array());
 		});
 	}

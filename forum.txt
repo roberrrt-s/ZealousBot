@@ -37,4 +37,5 @@ I can be reached through Discord as Preversive (Robert)#6611.
 ZealousBot creates his own channels, or will use your current channels with the names up top. To change those, you'll have to host your own version of ZealousBot (see Developers note). You can however, drag and drop the channels from the created category, and even delete the category entirely. You can remove the #daily-guildquest channel as well, but it will be recreated as soon as someone uses the +setdaily command. I'm working on a way to enable / disable certain features.
 
 [b]TODO[/b]
+
 - Stop automatically creating channels for features, but rather use +addchannel if you want to 'subscribe' to functionalites. to functionalites.
