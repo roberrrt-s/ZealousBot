@@ -3,7 +3,7 @@ const info = require('./../package.json');
 const MESSAGES = {
 	DAILY_RESET: 'The MapleStory 2 daily limit has been reset. You can now do your daily quests/raids/guildquests again',
 	WEEKLY_RESET: 'The MapleStory 2 weekly limit has been reset. You can now do your daily quests/raids/guildquests again',
-	PATCHNOTES: `\`ZealousBot v${info.version} is now live\` \n- Updates: Catch error event on permission issue when server offline. and fix timing every minute`,
+	PATCHNOTES: `\`ZealousBot v${info.version} is now live\` \n- Updates: So sorry for all the mentions guys, this is definitely the last one, some staging/production code got messed up while deploying. This version now has a working status checker. Happy Mapling!`,
 	SERVER_TIME: "Current EU MapleStory2 server time:",
 	SERVER_OFFLINE: "Hello @everyone, it seems the MS2 login server is offline, changing interval to checking every minute for updates!",
 	SERVER_BACKONLINE: "Hello @everyone, it seems the MS2 login server is now back online!"

@@ -20,7 +20,7 @@ class Crons {
 			() => {
 				this.app.client.channels.forEach(channel => {
 					console.log('testing');
-					//channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.DAILY_RESET}`) : null
+					//channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.DAILY_RESET}`).catch(console.error) : null
 				});
 			},
 			null,
@@ -51,7 +51,7 @@ class Crons {
 			() => {
 				console.log(`${this.app.util.prettyDate()} - ${this.app.util.prettyTime()} | Sending daily reset messages`)
 				this.app.client.channels.forEach(channel => {
-					channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.DAILY_RESET}`) : null
+					channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.DAILY_RESET}`).catch(console.error) : null
 				});
 			},
 			null,
@@ -68,7 +68,7 @@ class Crons {
 			() => {
 				console.log(`${this.app.util.prettyDate()} - ${this.app.util.prettyTime()} | Sending weekly reset messages`)
 				this.app.client.channels.forEach(channel => {
-					channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.WEEKLY_RESET}`) : null
+					channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.WEEKLY_RESET}`).catch(console.error) : null
 				});
 			},
 			null,
@@ -87,7 +87,7 @@ class Crons {
 				this.app.client.channels.forEach(channel => {
 					if(channel.name === this.app.CONFIG.DAILYGQ) {
 						this.app.methods.truncateChannel(channel, () => {
-							channel.send(`Nobody has set the daily guild quest objective yet, update it in the #${this.app.CONFIG.DEFAULT} channel using ${this.app.CONFIG.PREFIX}setdaily`)
+							channel.send(`Nobody has set the daily guild quest objective yet, update it in the #${this.app.CONFIG.DEFAULT} channel using ${this.app.CONFIG.PREFIX}setdaily`).catch(console.error)
 						})
 					}
 				});
@@ -121,10 +121,10 @@ class Crons {
 	checkLoginServer() {
 		const checkLoginServer = new CronJob(
 			//'* * * * * *',
-			'00 0,5,10,15,20,25,30,35,40,45,50,55 * * * *',
+			'00 0,1,5,10,15,20,25,30,35,40,45,50,55 * * * *',
 			() => {
 				this.app.checker.checkLoginServer(status => {
-					console.log(`${this.app.util.prettyDate()} - ${this.app.util.prettyTime()} | Checking login server`);
+					console.log(`Checking login server`);
 					console.log(`Server online: ${status}`)
 					// If the server is online:
 					if(status) {
@@ -133,6 +133,7 @@ class Crons {
 							this.app.client.channels.forEach(channel => {
 								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_BACKONLINE}`).catch(console.error) : null;
 								this.checkLoginServerJob.setTime(new CronTime('00 0,5,10,15,20,25,30,35,40,45,50,55 * * * *'));
+								this.checkLoginServerJob.start();
 							});
 						} 
 					}
@@ -143,12 +144,13 @@ class Crons {
 						if(this.app.checker.serverStatus !== status) {
 							this.app.client.channels.forEach(channel => {
 								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_OFFLINE}`).catch(console.error) : null
-								this.checkLoginServerJob.setTime(new CronTime('00 0-59 * * * *'));
+								this.checkLoginServerJob.setTime(new CronTime('00 * * * * *'));
+								this.checkLoginServerJob.start();
 							});
 						}
 					}
 
-					this.serverStatus = status;
+					this.app.checker.serverStatus = status;
 				})
 			},
 			null,

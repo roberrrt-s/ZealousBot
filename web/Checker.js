@@ -8,6 +8,7 @@ class Checker {
 	}
 
 	checkLoginServer(callback) {
+		console.log('pinging server')
 		tcpp.probe(this.app.CONFIG.MS_LOGIN_IP, this.app.CONFIG.MS_LOGIN_PORT, (err, status) => {
 			callback(status)
 		});
