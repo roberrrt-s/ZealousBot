@@ -35,7 +35,6 @@ class Crons {
 		const updateOwnTime = new CronJob(
 			'00 0-59 * * * *',
 			() => {
-				console.log('hi')
 				this.app.client.user.setActivity(`${this.app.util.prettyTime()}`, { type: 'Watching' });
 			},
 			null,
