@@ -131,7 +131,7 @@ class Crons {
 						// If the server was offline:
 						if(this.app.checker.serverStatus !== status) {
 							this.app.client.channels.forEach(channel => {
-								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_BACKONLINE}`) : null;
+								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_BACKONLINE}`).catch(console.error); : null;
 								this.checkLoginServerJob.setTime(new CronTime('00 0,5,10,15,20,25,30,35,40,45,50,55 * * * *'));
 							});
 						} 
@@ -142,8 +142,8 @@ class Crons {
 						// If the server was online:
 						if(this.app.checker.serverStatus !== status) {
 							this.app.client.channels.forEach(channel => {
-								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_OFFLINE}`) : null
-								this.checkLoginServerJob.setTime(new CronTime('00 0,59 * * * *'));
+								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_OFFLINE}`).catch(console.error); : null
+								this.checkLoginServerJob.setTime(new CronTime('00 0-59 * * * *'));
 							});
 						}
 					}
