@@ -4,6 +4,9 @@ const MESSAGES = {
 	DAILY_RESET: 'The MapleStory 2 daily limit has been reset. You can now do your daily quests/raids/guildquests again',
 	WEEKLY_RESET: 'The MapleStory 2 weekly limit has been reset. You can now do your daily quests/raids/guildquests again',
 	PATCHNOTES: `\`ZealousBot v${info.version} is now live\` \n- Updates: global patchnotes + UTC time in bot status message.`,
+	SERVER_TIME: "Current EU MapleStory2 server time:",
+	SERVER_OFFLINE: "Hello @everyone, it seems the MS2 login server is offline, changing interval to checking every minute for updates!",
+	SERVER_BACKONLINE: "Hello @everyone, it seems the MS2 login server is now back online!"
 }
 
 const COMMANDS = {
@@ -43,38 +46,11 @@ const COMMANDS = {
 			{
 				"name": "+setdaily <mission>",
 				"value": "Creates (if not found) a #daily-guildquest channel which sets one message at the top with the current daily guild quest objective. A new command resets the initial message"
-			},
-			{
-				"name": "**CRONJOBS**",
-				"value": "List of chronological messages:"
-			},
-			{
-				"name": "dailyReset",
-				"value": "Sends a message whenever the daily reset happens"
-			},
-			{
-				"name": "weeklyReset",
-				"value": "Sends a message whenever the weekly reset happens"
-			},
-			{
-				"name": "guildQuestReset",
-				"value": "Resets the #daily-guildquest channel on a daily basis."
-			},
-			{
-				"name": "checkNewsWebsite",
-				"value": "Checks the MS2 global news section and sends the latest news if there's a new article"
-			},
-			{
-				"name": "checkLoginServer",
-				"value": "Pings the MS2 login server to see if it it's online"
-			},
+			}
 		]
 	},
 	UNKNOWN_COMMAND: ":no_entry_sign: Unrecognized command, please use `+help` more information",
 	INVALID_ARGS: ":no_entry_sign: Command requires at least 1 argument",
-	SERVER_TIME: "Current EU MapleStory2 server time:",
-	SERVER_OFFLINE: "Hello @everyone, it seems the MS2 login server is offline, changing interval to checking every minute for updates!",
-	SERVER_BACKONLINE: "Hello @everyone, it seems the MS2 login server is now back online!"
 }
 
 module.exports = {MESSAGES, COMMANDS};

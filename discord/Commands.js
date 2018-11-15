@@ -68,7 +68,7 @@ class Commands {
 	}
 
 	getServerTime(msg) {
-		msg.channel.send(`${this.app.COMMANDS.SERVER_TIME} ${this.app.util.prettyTime()}`);
+		msg.channel.send(`${this.app.MESSAGES.SERVER_TIME} ${this.app.util.prettyTime()}`);
 	}
 
 	setDailyGuildQuest(msg, command, args) {
