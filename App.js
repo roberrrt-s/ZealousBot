@@ -50,6 +50,7 @@ class App {
 
 	initCrons() {
 		// this.crons.testReset();
+		this.crons.updateOwnTime();
 		this.crons.dailyReset();
 		this.crons.weeklyReset();
 		this.crons.guildQuestReset();

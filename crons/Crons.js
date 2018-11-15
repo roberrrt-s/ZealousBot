@@ -6,6 +6,7 @@ class Crons {
 	constructor(app) {
 		this.app = app;
 
+		this.updateOwnTimeJob;
 		this.testResetJob;
 		this.dailyResetJob;
 		this.weeklyResetJob;
@@ -28,6 +29,21 @@ class Crons {
 		);
 		testReset.start();
 		this.testResetJob = testReset;
+	}
+
+	updateOwnTime() {
+		const updateOwnTime = new CronJob(
+			'00 0-59 * * * *',
+			() => {
+				console.log('hi')
+				this.app.client.user.setActivity(`${this.app.util.prettyTime()}`, { type: 'Watching' });
+			},
+			null,
+			true,
+			this.app.CONFIG.TIMEZONE
+		);
+		updateOwnTime.start();
+		this.updateOwnTimeJob = updateOwnTime;
 	}
 
 	dailyReset() {

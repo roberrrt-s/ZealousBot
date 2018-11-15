@@ -3,6 +3,7 @@ const info = require('./../package.json');
 const MESSAGES = {
 	DAILY_RESET: 'The MapleStory 2 daily limit has been reset. You can now do your daily quests/raids/guildquests again',
 	WEEKLY_RESET: 'The MapleStory 2 weekly limit has been reset. You can now do your daily quests/raids/guildquests again',
+	PATCHNOTES: `\`ZealousBot v${info.version} is now live\` \n- Updates: global patchnotes + UTC time in bot status message.`,
 }
 
 const COMMANDS = {

@@ -13,6 +13,9 @@ class Commands {
 			case 'status':
 				this.getStatus(msg);
 				break;
+			case 'patchnotes':
+				this.sendPatchNotes(msg);
+				break;
 			case 'help':
 				this.getHelp(msg);
 				break;
@@ -39,6 +42,17 @@ class Commands {
 				guildList = guildList + `\`- ${guilds[i].name} in region: ${guilds[i].region}\` \n`;
 			}
 			msg.channel.send(`\`${this.app.client.user.username} (${this.app.client.user.id})\` \n\`I'm currently connected to the following servers:\`\n \n${guildList}`)
+		}
+	}
+
+	sendPatchNotes(msg) {
+		msg.delete(500)
+		if(msg.author.id === '206829489387208704') {
+			this.app.client.channels.forEach(channel => {
+				if(channel.name === this.app.CONFIG.DEFAULT) {
+					channel.send(this.app.MESSAGES.PATCHNOTES);
+				}
+			});
 		}
 	}
 

@@ -26,6 +26,7 @@ I can be reached through Discord as `Preversive (Robert)#6611`.
 
 ## Cronjobs 
 
+- `updateOwnTime` every minute
 - `dailyReset` every day except Friday at 0:00 UTC
 - `weeklyReset` every Friday night at 0:00 UTC
 - `guildQuestReset` every day at 0:00 UTC
