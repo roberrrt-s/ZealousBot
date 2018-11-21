@@ -45,7 +45,7 @@ class Methods {
 		guild.createChannel(this.app.CONFIG.DEFAULT, 'text', [], 'I require my own channel for updates')
 			.then(channel => {
 				channel.setParent(channel.guild.channels.find(channel => channel.name === this.app.CONFIG.CATEGORY));
-				channel.send('Created a new channel in this server. Type `+help` for commands');
+				channel.send('Created a new channel in this server. Type `+help` for commands').catch(console.error);
 			})
 			.catch(console.error);
 	}

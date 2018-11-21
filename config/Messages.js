@@ -3,10 +3,23 @@ const info = require('./../package.json');
 const MESSAGES = {
 	DAILY_RESET: 'The MapleStory 2 daily limit has been reset. You can now do your daily quests/raids/guildquests again',
 	WEEKLY_RESET: 'The MapleStory 2 weekly limit has been reset. You can now do your daily quests/raids/guildquests again',
-	PATCHNOTES: `\`ZealousBot v${info.version} is now live\` \n- Updates: So sorry for all the mentions guys, this is definitely the last one, some staging/production code got messed up while deploying. This version now has a working status checker. Happy Mapling!`,
+	PATCHNOTES: `\`ZealousBot v${info.version} is now live\` \n- Updates: +setdaily now accepts fixed arguments which also displays the best map to hunt on. Use +setdaily apple (or any other random argument) to see a list of options`,
 	SERVER_TIME: "Current EU MapleStory2 server time:",
 	SERVER_OFFLINE: "Hello @everyone, it seems the MS2 login server is offline, changing interval to checking every minute for updates!",
-	SERVER_BACKONLINE: "Hello @everyone, it seems the MS2 login server is now back online!"
+	SERVER_BACKONLINE: "Hello @everyone, it seems the MS2 login server is now back online!",
+	DAILY_GUILDQUESTS: {
+		"wooden": "Open 10 wooden chests\nMap: North Royal Road (Spawn: xx:00, xx:25, xx:55)",
+		"golden": "Open 3 golden chests\nMap: North Royal Road",
+		"freshwater": "Catch 10 freshwater fish\nMap: Tria (Beginner I)",
+		"foulwater": "Catch 10 foulwater fish\nMap: Evansville (Beginner I)",
+		"lava": "Catch 10 lava fish\nMap: Lavaworks (Beginner IV)",
+		"beasts": "Kill 100 Beasts\nMap: Ellin Grove",
+		"insects": "Kill 100 Insects\nMap: The Deck Skatepark",
+		"undead": "Kill 100 Undead\nMap: Goldus Pharmaceuticals",
+		"divine": "Kill 100 Divine\nMap: Aurora Laboratory",
+		"humanoid": "Kill 100 Humanoid\nMap: Karnif's Fang",
+		"inanimate": "Kill 100 Inanimate\nMap: Slumberland",
+	}
 }
 
 const COMMANDS = {
@@ -51,6 +64,7 @@ const COMMANDS = {
 	},
 	UNKNOWN_COMMAND: ":no_entry_sign: Unrecognized command, please use `+help` more information",
 	INVALID_ARGS: ":no_entry_sign: Command requires at least 1 argument",
+	INVALID_DAILY: ":no_entry_sign: Incorrect argument, use one of the following options:",
 }
 
 module.exports = {MESSAGES, COMMANDS};

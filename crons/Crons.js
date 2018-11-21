@@ -126,6 +126,11 @@ class Crons {
 				this.app.checker.checkLoginServer(status => {
 					console.log(`Checking login server`);
 					console.log(`Server online: ${status}`)
+
+					if(this.app.checker.serverStatus === null) {
+						this.app.checker.serverStatus = status;
+						return false;
+					}
 					// If the server is online:
 					if(status) {
 						// If the server was offline:

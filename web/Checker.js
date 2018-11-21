@@ -4,7 +4,7 @@ class Checker {
 	constructor(app) {
 		this.app = app
 		// Assume the server is online
-		this.serverStatus = true;
+		this.serverStatus = null;
 	}
 
 	checkLoginServer(callback) {

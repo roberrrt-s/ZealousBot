@@ -82,23 +82,22 @@ class Scraper {
 									let id = item.split('/');
 
 									if(last.indexOf(id[4]) > 0) {
-										console.log('If this is less than 8, a new message should be send.')
 										foundIndex = i;
 									}
 									if(foundIndex !== null && i > foundIndex) {
 										console.log('Sending the following news item:')
 										console.log(item);
-										channel.send(`Hey @everyone, there's a new news item from Nexon: ${this.app.CONFIG.NEWS_PREFIX}${item}`);
+										channel.send(`Hey @everyone, there's a new news item from Nexon: ${this.app.CONFIG.NEWS_PREFIX}${item}`).catch(console.error);
 									}
 								});
 
-								console.log(foundIndex);
+								console.log(`If this number is less than 8 a new message should be send: ${foundIndex}`);
 							}
 							else {
 								// If the channel is empty, send the 10 latest items.
 								console.log('Channel is empty, sending the latest 9 items');
 								news.forEach((item) => {
-									channel.send(`${this.app.CONFIG.NEWS_PREFIX}${item}`)
+									channel.send(`${this.app.CONFIG.NEWS_PREFIX}${item}`).catch(console.error);
 								})
 							}
 						})
