@@ -6,3 +6,4 @@ package-lock.json
 *.sublime-workspace
 *.sublime-project
 .env
+.DS_Store
