@@ -19,6 +19,7 @@ const MESSAGES = {
 		"divine": "Kill 100 Divine\nMap: Aurora Laboratory",
 		"humanoid": "Kill 100 Humanoid\nMap: Karnif's Fang",
 		"inanimate": "Kill 100 Inanimate\nMap: Slumberland",
+		"plants": "Kill 100 Plants\nMap: Oasis Town",
 	}
 }
 
