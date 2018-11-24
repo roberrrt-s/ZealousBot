@@ -3,7 +3,7 @@ const info = require('./../package.json');
 const MESSAGES = {
 	DAILY_RESET: 'The MapleStory 2 daily limit has been reset. You can now do your daily quests/raids/guildquests again',
 	WEEKLY_RESET: 'The MapleStory 2 weekly limit has been reset. You can now do your daily quests/raids/guildquests again',
-	PATCHNOTES: `\`ZealousBot v${info.version} is now live\` \n- Updates: +setdaily now accepts fixed arguments which also displays the best map to hunt on. Use +setdaily apple (or any other random argument) to see a list of options`,
+	PATCHNOTES: `\`ZealousBot v${info.version} is now live\` \n- Updates: Added plants + machines to +setdaily, also +setdaily custom <the daily quest> can be used to customize this format in the old way of setting guild quests.`,
 	SERVER_TIME: "Current EU MapleStory2 server time:",
 	SERVER_OFFLINE: "Hello @everyone, it seems the MS2 login server is offline, changing interval to checking every minute for updates!",
 	SERVER_BACKONLINE: "Hello @everyone, it seems the MS2 login server is now back online!",
@@ -19,7 +19,8 @@ const MESSAGES = {
 		"divine": "Kill 100 Divine\nMap: Aurora Laboratory",
 		"humanoid": "Kill 100 Humanoid\nMap: Karnif's Fang",
 		"inanimate": "Kill 100 Inanimate\nMap: Slumberland",
-		"plants": "Kill 100 Plants\nMap: Oasis Town",
+		"plants": "Kill 100 Plants\nMap: Mounthill",
+		"machine": "Kill 100 Machines\nMap: Ludi Station",
 	}
 }
 
@@ -65,7 +66,7 @@ const COMMANDS = {
 	},
 	UNKNOWN_COMMAND: ":no_entry_sign: Unrecognized command, please use `+help` more information",
 	INVALID_ARGS: ":no_entry_sign: Command requires at least 1 argument",
-	INVALID_DAILY: ":no_entry_sign: Incorrect argument, use one of the following options:",
+	INVALID_DAILY: ":no_entry_sign: Incorrect argument, set a custom one using +setdaily custom <the quest> or use one of the following options:",
 }
 
 module.exports = {MESSAGES, COMMANDS};
