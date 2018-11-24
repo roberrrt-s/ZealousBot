@@ -66,7 +66,7 @@ const COMMANDS = {
 	},
 	UNKNOWN_COMMAND: ":no_entry_sign: Unrecognized command, please use `+help` more information",
 	INVALID_ARGS: ":no_entry_sign: Command requires at least 1 argument",
-	INVALID_DAILY: ":no_entry_sign: Incorrect argument, set a custom one using +setdaily custom <the quest> or use one of the following options:",
+	INVALID_DAILY: ":no_entry_sign: Incorrect argument, set a custom one using +setdaily <customised quest> (more than two arguments) or use one of the following options:",
 }
 
 module.exports = {MESSAGES, COMMANDS};

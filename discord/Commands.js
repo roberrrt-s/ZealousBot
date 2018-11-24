@@ -89,15 +89,14 @@ class Commands {
 
 			if (args.length === 1 && args[0] in this.app.MESSAGES.DAILY_GUILDQUESTS) {
 				daily = this.app.MESSAGES.DAILY_GUILDQUESTS[args[0]];
-			} else if(args[0] === 'custom') {
-				args.shift()
+			} else if(args.length > 1) {
 				daily = args.join(' ');
 			}
 			else {
 				let list = Object.keys(this.app.MESSAGES.DAILY_GUILDQUESTS);
 				msg.channel.send(`${this.app.COMMANDS.INVALID_DAILY} ${list.join(', ')}. (+setdaily)`)
 					.then(msg => {
-						msg.delete(5000);
+						msg.delete(7500);
 					})
 					.catch(console.error);
 					return false;
