@@ -17,13 +17,14 @@ const Methods = require('./discord/Methods.js').Methods;
 const Commands = require('./discord/Commands.js').Commands;
 const Scraper = require('./web/Scraper.js').Scraper;
 const Checker = require('./web/Checker').Checker;
-const Customizer = require('./util/Customizer').Customizer;
+const Database = require('./data/Database').Database;
 const Util = require('./util/Util.js').Util;
 
 class App {
 	constructor() {
 		// Set the client inside the app
 		this.client = client;
+		this.db;
 
 		this.CONFIG = CONFIG;
 		this.MESSAGES = MESSAGES;
@@ -37,7 +38,7 @@ class App {
 		this.commands = new Commands(this);
 		this.scraper = new Scraper(this);
 		this.checker = new Checker(this);
-		this.customizer = new Customizer(this);
+		this.database = new Database(this);
 		this.util = new Util();
 
 		this.init();
@@ -46,6 +47,7 @@ class App {
 	// Initialize connection with Discord
 	init() {
 		console.log('Logging into discord servers');
+		this.database.start();
 		this.events.initEvents();
 		this.connect.login();
 	}

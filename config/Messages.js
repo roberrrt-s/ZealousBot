@@ -21,6 +21,7 @@ const MESSAGES = {
 		"inanimate": "Kill 100 Inanimate\nMap: Slumberland",
 		"plants": "Kill 100 Plants\nMap: Mounthill",
 		"machine": "Kill 100 Machines\nMap: Ludi Station",
+		"spirits": "Kill 100 Spirits\nMap: Misty Temple inside Razed Forest"
 	}
 }
 
