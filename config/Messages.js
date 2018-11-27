@@ -21,7 +21,7 @@ const MESSAGES = {
 		"inanimate": "Kill 100 Inanimate\n**Map:** Slumberland",
 		"plants": "Kill 100 Plants\n**Map:** Mounthill",
 		"machines": "Kill 100 Machines\n**Map:** Ludi Station",
-		"spirits": "Kill 100 Spirits\n**Map:** Misty Temple inside Razed Forest"
+		"spirits": "Kill 100 Spirits\n**Map:** Misty Temple inside Razed Forest",
 		"worldbosses": "Defeat 3 world bosses\n**Map:** Ludari Arena (xx:55), Lavender Island (xx:05), Nazkar Pyramid (xx:15)\n\n(On crowded times start at ch 1/2 and move two channels down each time, otherwise start at ch 1 and move one channel down)"
 	}
 }
