@@ -104,7 +104,7 @@ class Commands {
 
 			const channel = msg.guild.channels.find(channel => channel.name === this.app.CONFIG.DAILYGQ);
 			this.app.methods.truncateChannel(channel, () => {
-				channel.send(`${this.app.util.prettyDate()} Daily guild quest objective: \n${daily}`).catch(console.error);
+				channel.send(`${this.app.util.prettyDate()} Daily guild quest:\n**Objective:** ${daily}`).catch(console.error);
 			} );
 		});
 

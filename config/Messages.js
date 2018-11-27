@@ -8,20 +8,21 @@ const MESSAGES = {
 	SERVER_OFFLINE: "Hello @everyone, it seems the MS2 login server is offline, changing interval to checking every minute for updates!",
 	SERVER_BACKONLINE: "Hello @everyone, it seems the MS2 login server is now back online!",
 	DAILY_GUILDQUESTS: {
-		"wooden": "Open 10 wooden chests\nMap: North Royal Road (Spawn: xx:00, xx:25, xx:55)",
-		"golden": "Open 3 golden chests\nMap: North Royal Road",
-		"freshwater": "Catch 10 freshwater fish\nMap: Tria (Beginner I)",
-		"foulwater": "Catch 10 foulwater fish\nMap: Evansville (Beginner I)",
-		"lava": "Catch 10 lava fish\nMap: Lavaworks (Beginner IV)",
-		"beasts": "Kill 100 Beasts\nMap: Ellin Grove",
-		"insects": "Kill 100 Insects\nMap: The Deck Skatepark",
-		"undead": "Kill 100 Undead\nMap: Goldus Pharmaceuticals",
-		"divine": "Kill 100 Divine\nMap: Aurora Laboratory",
-		"humanoid": "Kill 100 Humanoid\nMap: Karnif's Fang",
-		"inanimate": "Kill 100 Inanimate\nMap: Slumberland",
-		"plants": "Kill 100 Plants\nMap: Mounthill",
-		"machine": "Kill 100 Machines\nMap: Ludi Station",
-		"spirits": "Kill 100 Spirits\nMap: Misty Temple inside Razed Forest"
+		"wooden": "Open 10 wooden chests\n**Map:** North Royal Road (Spawn: xx:00, xx:25, xx:55)",
+		"golden": "Open 3 golden chests\n**Map:** North Royal Road",
+		"freshwater": "Catch 10 freshwater fish\n**Map:** Tria (Beginner I)",
+		"foulwater": "Catch 10 foulwater fish\n**Map:** Evansville (Beginner I)",
+		"lava": "Catch 10 lava fish\n**Map:** Lavaworks (Beginner IV)",
+		"beasts": "Kill 100 Beasts\n**Map:** Ellin Grove",
+		"insects": "Kill 100 Insects\n**Map:** The Deck Skatepark",
+		"undead": "Kill 100 Undead\n**Map:** Goldus Pharmaceuticals",
+		"divine": "Kill 100 Divine\n**Map:** Aurora Laboratory",
+		"humanoid": "Kill 100 Humanoid\n**Map:** Karnif's Fang",
+		"inanimate": "Kill 100 Inanimate\n**Map:** Slumberland",
+		"plants": "Kill 100 Plants\n**Map:** Mounthill",
+		"machines": "Kill 100 Machines\n**Map:** Ludi Station",
+		"spirits": "Kill 100 Spirits\n**Map:** Misty Temple inside Razed Forest"
+		"worldbosses": "Defeat 3 world bosses\n**Map:** Ludari Arena (xx:55), Lavender Island (xx:05), Nazkar Pyramid (xx:15)\n\n(On crowded times start at ch 1/2 and move two channels down each time, otherwise start at ch 1 and move one channel down)"
 	}
 }
 
