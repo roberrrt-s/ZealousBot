@@ -5,7 +5,7 @@ const MESSAGES = {
 	WEEKLY_RESET: 'The MapleStory 2 weekly limit has been reset. You can now do your daily quests/raids/guildquests again',
 	PATCHNOTES: `\`ZealousBot v${info.version} is now live\` \n- Updates: Added plants + machines to +setdaily, also +setdaily custom <the daily quest> can be used to customize this format in the old way of setting guild quests.`,
 	SERVER_TIME: "Current EU MapleStory2 server time:",
-	SERVER_OFFLINE: "Hello @here, it seems the MS2 login server is offline, changing interval to checking every minute for updates!",
+	SERVER_OFFLINE: "Hello @here, it seems the MS2 login server is offline, changing interval to checking every 15 seconds for updates!",
 	SERVER_BACKONLINE: "Hello @@here, it seems the MS2 login server is now back online!",
 	DAILY_GUILDQUESTS: {
 		"wooden": "Open 10 wooden chests\n**Map:** North Royal Road (Spawn: xx:00, xx:25, xx:55)",

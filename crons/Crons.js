@@ -102,7 +102,7 @@ class Crons {
 
 	checkNewsWebsite() {
 		const checkNewsWebsite = new CronJob(
-			'00 00,30 0-23 * * *',
+			'00 00,10,20,30,40,50 0-23 * * *',
 //			'00 00 00 * * * *',
 			() => {
 				console.log(`${this.app.util.prettyDate()} - ${this.app.util.prettyTime()} | Starting command to scrape NX news site`)
@@ -121,7 +121,7 @@ class Crons {
 	checkLoginServer() {
 		const checkLoginServer = new CronJob(
 			//'* * * * * *',
-			'00 0,1,5,10,15,20,25,30,35,40,45,50,55 * * * *',
+			'00 * * * * *',
 			() => {
 				this.app.checker.checkLoginServer(status => {
 					console.log(`Checking login server`);
@@ -137,7 +137,7 @@ class Crons {
 						if(this.app.checker.serverStatus !== status) {
 							this.app.client.channels.forEach(channel => {
 								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_BACKONLINE}`).catch(console.error) : null;
-								this.checkLoginServerJob.setTime(new CronTime('00 0,5,10,15,20,25,30,35,40,45,50,55 * * * *'));
+								this.checkLoginServerJob.setTime(new CronTime('00 * * * * *'));
 								this.checkLoginServerJob.start();
 							});
 						} 
@@ -149,7 +149,7 @@ class Crons {
 						if(this.app.checker.serverStatus !== status) {
 							this.app.client.channels.forEach(channel => {
 								channel.name === this.app.CONFIG.DEFAULT ? channel.send(`${this.app.util.prettyTime()}: ${this.app.MESSAGES.SERVER_OFFLINE}`).catch(console.error) : null
-								this.checkLoginServerJob.setTime(new CronTime('00 * * * * *'));
+								this.checkLoginServerJob.setTime(new CronTime('00,15,30,45 * * * * *'));
 								this.checkLoginServerJob.start();
 							});
 						}
