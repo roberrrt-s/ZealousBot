@@ -1,6 +1,6 @@
 {
   "name": "zealousbot",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Discord / Web fetch and serve bot.",
   "main": "App.js",
   "engines": {
